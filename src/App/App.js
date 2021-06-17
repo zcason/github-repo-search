@@ -1,11 +1,11 @@
 import { Route, Switch } from 'react-router-dom';
-import DetailsPage from '../Routes/DetailsPage/DetailsPage';
-import SearchPage from '../Routes/SearchPage/SearchPage';
+import DetailsPage from '../routes/DetailsPage/DetailsPage';
+import SearchPage from '../routes/SearchPage/SearchPage';
 import './App.css';
 
 function App() {
   return (
-    <main>
+    <div>
       <Switch>
         <Route
           exact
@@ -17,7 +17,7 @@ function App() {
           component={DetailsPage}
         />
       </Switch>
-    </main>
+    </div>
   );
 }
 

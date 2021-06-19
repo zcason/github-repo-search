@@ -9,7 +9,6 @@ function SearchPage() {
             const res = await fetch('https://api.github.com/search/repositories?q=' + name + language + sortBy);
             const searchResults = await res.json();
 
-        console.log(searchResults)
         setSearchResults(searchResults);
         } catch (e) {
             alert(e);
@@ -20,7 +19,7 @@ function SearchPage() {
             <div>
                 <h1>Find Your Repo</h1>
                 <SearchInput getResults={getResults}/>
-                <SearchResults result={searchResults}/>
+                <SearchResults results={searchResults}/>
             </div>
     );
 }

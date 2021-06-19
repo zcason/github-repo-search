@@ -6,6 +6,7 @@ const languageOptions = [
     {value: "+language:c++" , label: "C++"},
     {value: "+language:go" , label: "Go"},
     {value: "+language:haskell" , label: "Haskell"},
+    {value: "+language:html" , label: "HTML"},
     {value: "+language:java" , label: "Java"},
     {value: "+language:javascript" , label: "Javascript"},
     {value: "+language:php" , label: "PHP"},

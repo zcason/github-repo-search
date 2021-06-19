@@ -1,11 +1,14 @@
 import React from 'react';
+import SearchInput from '../../components/SearchInput/SearchInput';
+import SearchResults from '../../components/SearchResult/SearchResults';
 
 function SearchPage(props) {
     return (
-        <>
-            <h1>Search Page</h1>
-            
-        </>
+        <div>
+            <h1>Find Your Repo</h1>
+            <SearchInput/>
+            <SearchResults />
+        </div>
     );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function SearchResults(props) {
     const { results } = props;
@@ -14,6 +15,9 @@ function SearchResults(props) {
                     return <li key={result.id}>
                         <p>{result.name}</p>
                         <p>{result.language}</p>
+                        <Link 
+                            to={`/details/${result.owner.login}/${result.name}`}
+                            >Button</Link>
                     </li>
                 })}
             </ul>}

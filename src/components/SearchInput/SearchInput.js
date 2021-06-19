@@ -1,38 +1,34 @@
 import React, {useState} from 'react';
 import Select from 'react-select';
 import { languageOptions, sortOptions } from './SearchInputUtils';
-import getSearchResults from '../../services/search-api-services';
 
 function SearchInput(props) {
     const [repoName, setRepoName] = useState("");
     const [language, setLanguage] = useState("");
     const [sortBy, setSortBy] = useState("");
-    const [searchResults, setSearchResults] = useState(null)
-
-    const getResults = async(event) => { 
+    const [error, setError] = useState(null);
+    const submitForm = (event) => { 
         event.preventDefault();
+        const name = repoName.replace(/\s/g , "");
 
-        try {
-            const result = await getSearchResults(repoName,language,sortBy);
-            console.log(result)
-
-            setSearchResults(result);
-        } catch (e) {
-            alert(e);
+        if (name === "") {
+            setError("Please enter a valid name!");
+        } else {
+            props.getResults(name, language, sortBy);
+            setError(null);
         }
     };
 
-
-
     return (
         <div>
-            <form onSubmit={getResults}>
+            <form onSubmit={submitForm}>
                 <input 
                     onChange={e => setRepoName(e.target.value)}
                     placeholder={"Enter Repo Name"}
                     type="text" 
                     required
                 />
+                {error && <p>{error}</p>}
                 <div>
                     <div>
                         <label htmlFor="language">Language:</label>

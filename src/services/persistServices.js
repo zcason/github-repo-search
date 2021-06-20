@@ -1,4 +1,4 @@
-// save state to the local storage 
+// Saves state to the local storage 
 export const saveState = (state) => {
     try {
        const serializedState = JSON.stringify(state);
@@ -8,7 +8,7 @@ export const saveState = (state) => {
     }
 };
 
-// loads saved state from the local storage
+// Loads saved state from the local storage
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem("state");

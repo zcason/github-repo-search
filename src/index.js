@@ -13,10 +13,11 @@ const persistedState = loadState();
 const store = createStore(
     rootReducer,
     persistedState,
+    // This is a state management visualizer for the browser
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
    );
 
-// will update the local storage anytime the state changes
+// Will update the local storage anytime the state changes
 store.subscribe(() => {
     saveState(store.getState());
 })

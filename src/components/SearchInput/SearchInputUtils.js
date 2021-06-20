@@ -1,4 +1,4 @@
-const languageOptions = [
+export const languageOptions = [
     {value: "" , label: "All"},
     {value: "+language:assembly" , label: "Assembly"},
     {value: "+language:c" , label: "C"},
@@ -17,10 +17,7 @@ const languageOptions = [
     {value: "+language:swift" , label: "Swift"},
 ];
 
-const sortOptions = [
+export const sortOptions = [
     {value: "" , label: "Best Match (Default)"},
     {value: "&sort=stars" , label: "Stars"}
 ];
-
-
-export {languageOptions, sortOptions};

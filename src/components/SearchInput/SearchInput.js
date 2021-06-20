@@ -6,17 +6,17 @@ import { retriveResults } from '../../redux/actions';
 import getResults from '../../services/searchService';
 
 function SearchInput() {
-    const disptach = useDispatch();
     const [repoName, setRepoName] = useState("");
     const [language, setLanguage] = useState("");
     const [sortBy, setSortBy] = useState("");
     const [error, setError] = useState(null);
+    const disptach = useDispatch();
     const submitForm = async(event) => { 
         event.preventDefault();
-        // removes space from the input field
+        // Removes all spaces from the input field
         const name = repoName.replace(/\s/g , "");
 
-        // checks to see if there's atleast 1 character in the input field
+        // Checks to see if there's atleast one character in the input field
         if (name === "") {
             setError("Please enter a valid name!");
         } else {

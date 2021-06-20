@@ -1,11 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-function SearchResults(props) {
-    const { results } = props;
-    // const hasResults = if (results && results.totalCount)  {
-        
-    // } 
+function SearchResults() {
+    const results = useSelector(state => state.results);
 
     return (
         <div>
@@ -16,7 +14,7 @@ function SearchResults(props) {
                         <p>{result.name}</p>
                         <p>{result.language}</p>
                         <Link 
-                            to={`/details/${result.owner.login}/${result.name}`}
+                            to={`/details/${result.id}`}
                             >Button</Link>
                     </li>
                 })}

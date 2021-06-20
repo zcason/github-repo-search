@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 
 function DetailsPage({match}) {
     const [repoDetails, setRepoDetails] = useState(null);
-    const {owner, repo} = match.params;
-    const getRepo = async () => {
-        try {
-            const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
-            const details = await res.json();
-
-            setRepoDetails(details);
-            console.log(details)
-        } catch (e) {
-            alert(e);
-        }
-    }
+    const repos = useSelector(state => state.results.items);
+    const {id} = match.params;
 
     useEffect(() => { 
-        getRepo();
+       const repo = repos.find(item => item.id === parseInt(id));
+       setRepoDetails(repo);
     }, []); 
 
     return (

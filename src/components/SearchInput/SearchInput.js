@@ -1,20 +1,27 @@
 import React, {useState} from 'react';
 import Select from 'react-select';
 import { languageOptions, sortOptions } from './SearchInputUtils';
+import { useDispatch } from 'react-redux';
+import { retriveResults } from '../../redux/actions';
+import getResults from '../../services/searchService';
 
-function SearchInput(props) {
+function SearchInput() {
+    const disptach = useDispatch();
     const [repoName, setRepoName] = useState("");
     const [language, setLanguage] = useState("");
     const [sortBy, setSortBy] = useState("");
     const [error, setError] = useState(null);
     const submitForm = (event) => { 
         event.preventDefault();
+        // removes space from the input field
         const name = repoName.replace(/\s/g , "");
 
+        // checks to see if there's atleast 1 character in the input field
         if (name === "") {
             setError("Please enter a valid name!");
         } else {
-            props.getResults(name, language, sortBy);
+            getResults(name, language, sortBy)
+                .then(result => disptach(retriveResults(result)));
             setError(null);
         }
     };

@@ -13,7 +13,7 @@ function App() {
           component={SearchPage}
         />
         <Route 
-          path={'/details/:owner/:repo'}
+          path={'/details/:id'}
           component={DetailsPage}
         />
       </Switch>

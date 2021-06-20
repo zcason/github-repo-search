@@ -16,6 +16,7 @@ const languageOptions = [
     {value: "+language:scala" , label: "Scala"},
     {value: "+language:swift" , label: "Swift"},
 ];
+
 const sortOptions = [
     {value: "" , label: "Best Match (Default)"},
     {value: "&sort=stars" , label: "Stars"}

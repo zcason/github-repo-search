@@ -1,12 +1,8 @@
 const getResults = async(name,language,sortBy) => {
-    try {
-        const res = await fetch('https://api.github.com/search/repositories?q=' + name + language + sortBy);
-        const searchResults = await res.json();
-
-        return searchResults;
-    } catch (e) {
-        return e.message;
-    }
+    const res = await fetch('https://api.github.com/search/repositories?q=' + name + language + sortBy);
+    return await ((!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json());
 }
 
 export default getResults;

@@ -11,7 +11,7 @@ function SearchInput() {
     const [language, setLanguage] = useState("");
     const [sortBy, setSortBy] = useState("");
     const [error, setError] = useState(null);
-    const submitForm = (event) => { 
+    const submitForm = async(event) => { 
         event.preventDefault();
         // removes space from the input field
         const name = repoName.replace(/\s/g , "");
@@ -20,8 +20,8 @@ function SearchInput() {
         if (name === "") {
             setError("Please enter a valid name!");
         } else {
-            getResults(name, language, sortBy)
-                .then(result => disptach(retriveResults(result)));
+            const results = await getResults(name, language, sortBy)
+            disptach(retriveResults(results));
             setError(null);
         }
     };

@@ -1,17 +1,25 @@
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
 import App from './App/App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
 import rootReducer from './redux/reducers';
 import { Provider } from 'react-redux';
+import { saveState, loadState } from './services/persistServices';
 
+const persistedState = loadState();
 const store = createStore(
     rootReducer,
+    persistedState,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
    );
+
+// will update the local storage anytime the state changes
+store.subscribe(() => {
+    saveState(store.getState());
+})
 
 ReactDOM.render(
   <Provider store={store}>

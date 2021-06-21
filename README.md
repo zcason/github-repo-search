@@ -1,6 +1,6 @@
 # Github Repository Search
 
-A web application thats allow users to search for github repositories using github's repository search api.
+A web application that allows users to search for github repositories using github's repository search api.
 
 ### How to run it
 

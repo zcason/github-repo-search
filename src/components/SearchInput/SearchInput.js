@@ -4,6 +4,7 @@ import { languageOptions, sortOptions } from './SearchInputUtils';
 import { useDispatch } from 'react-redux';
 import { retriveResults } from '../../redux/actions';
 import getResults from '../../services/searchService';
+import './SearchInput.css';
 
 function SearchInput() {
     const [repoName, setRepoName] = useState("");
@@ -27,18 +28,19 @@ function SearchInput() {
     };
 
     return (
-        <div>
+        <div className="search-form">
             <form onSubmit={submitForm}>
                 <input 
+                    className="search-input"
                     onChange={e => setRepoName(e.target.value)}
                     placeholder={"Enter Repo Name"}
                     type="text" 
                     required
                 />
-                {error && <p>{error}</p>}
-                <div>
-                    <div>
-                        <label htmlFor="language">Language:</label>
+                {error && <p className="error">{error}</p>}
+                <div className="search-selectors">
+                    <div className="select-box">
+                        <label htmlFor="language">Language</label>
                         <Select 
                             id="language"
                             placeholder={"All"}
@@ -47,8 +49,8 @@ function SearchInput() {
                             options={languageOptions}
                         />
                     </div>
-                    <div>
-                        <label htmlFor="sort-by">Sort By:</label>
+                    <div className="select-box">
+                        <label htmlFor="sort-by">Sort By</label>
                         <Select 
                             id="sort-by"
                             placeholder={"Best Match (Default)"}
@@ -57,8 +59,8 @@ function SearchInput() {
                             options={sortOptions}
                             />
                     </div>
-                    <button type="submit">Submit</button>
                 </div>
+                <button type="submit">Submit</button>
             </form>
         </div>
     );

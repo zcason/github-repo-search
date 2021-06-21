@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Pagination from '../Pagination/Pagination';
+import './SearchResults.css';
 
 function SearchResults() {
     const repos = useSelector(state => state.results.items);
@@ -22,22 +23,31 @@ function SearchResults() {
             {(repos && !hasResults) && 
             <p>Sorry, there are no repositories that matches this search.</p>
             }
-            {(repos && hasResults) && <ul>
+            {(repos && hasResults) && <ul className="repo-list" >
                 {currentRepos.map(repo => {
-                    return <li key={repo.id}>
-                        <p>{repo.name}</p>
-                        <p>{repo.language}</p>
-                        <Link 
-                            to={`/details/${repo.id}`}
-                            >Button</Link>
+                    return <li key={repo.id} className="repo-card">
+                        <img 
+                        src={repo.owner.avatar_url}
+                        alt={`${repo.owner.login}`}
+                        />
+                        <div className="repo-card-details">
+                            <p>{repo.name}</p>
+                            <p>{repo.language}</p>
+                        </div>
+                        <Link className="repo-link"
+                        to={`/details/${repo.id}`}
+                        >Details</Link>
                     </li>
                 })}
             </ul>}
-            <Pagination 
-            reposPerPage={reposPerPage} 
-            totalRepos={repos.length} 
-            paginate={paginate}
-            />
+            <div className="center-paginator">
+                <Pagination
+                currentPage={currentPage}
+                reposPerPage={reposPerPage} 
+                totalRepos={repos.length} 
+                paginate={paginate}
+                />
+            </div>
         </div>
     );
 }

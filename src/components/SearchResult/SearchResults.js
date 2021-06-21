@@ -19,9 +19,9 @@ function SearchResults() {
 
     return (
         <div>
-            {!repos && <p>search for Repo</p>}
+            {!repos && <p className="no-repos">search for Repo</p>}
             {(repos && !hasResults) && 
-            <p>Sorry, there are no repositories that matches this search.</p>
+            <p className="no-repos">Sorry, there are no repositories that matches this search.</p>
             }
             {(repos && hasResults) && <ul className="repo-list" >
                 {currentRepos.map(repo => {

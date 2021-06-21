@@ -1,0 +1,60 @@
+.details-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.back-link {
+  align-self: flex-start;
+  color: white;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+.repo-details {
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Roboto", sans-serif;
+}
+
+.repo-details h2 {
+  margin-bottom: 0;
+  font-size: 40px;
+}
+
+.details-page img {
+  height: 250px;
+  width: 250px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+.star-container {
+  font-size: 20px;
+}
+.star {
+  color: gold;
+}
+
+.repo-details {
+  margin-bottom: 50px;
+}
+
+@media only screen and (min-width: 600px) {
+  .back-link:hover {
+    color: #ff6600;
+  }
+
+  .details-page img {
+    height: 350px;
+    width: 350px;
+  }
+}
+
+@media only screen and (min-height: 450px) {
+  .details-page {
+    height: 120vh;
+  }
+}

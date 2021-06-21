@@ -52,9 +52,3 @@
     width: 350px;
   }
 }
-
-@media only screen and (min-height: 450px) {
-  .details-page {
-    height: 120vh;
-  }
-}

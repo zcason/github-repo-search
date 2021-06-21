@@ -5,25 +5,24 @@ import Pagination from '../Pagination/Pagination';
 import './SearchResults.css';
 
 function SearchResults() {
-    const repos = useSelector(state => state.results.items);
-    // Checks to see if there are any repositories that matches the user's search details
-    const hasResults = repos.length >= 1;
     const [currentPage, setCurrentPage] = useState(1);
     const [reposPerPage] = useState(5); 
-    // Get current repositories
     const indexOfLastRepo = currentPage * reposPerPage;
     const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
-    const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
+    // Search results from the store 
+    const results = useSelector(state => state.results);
+    const totalRepos = results ? results.items.length : null;
+    // Gets current repositories
+    const currentRepos = results ? results.items.slice(indexOfFirstRepo, indexOfLastRepo) : 0;
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div>
-            {!repos && <p className="no-repos">search for Repo</p>}
-            {(repos && !hasResults) && 
+            {totalRepos === 0 && 
             <p className="no-repos">Sorry, there are no repositories that matches this search.</p>
             }
-            {(repos && hasResults) && <ul className="repo-list" >
+            {totalRepos > 0 && <ul className="repo-list" >
                 {currentRepos.map(repo => {
                     return <li key={repo.id} className="repo-card">
                         <img 
@@ -44,7 +43,7 @@ function SearchResults() {
                 <Pagination
                 currentPage={currentPage}
                 reposPerPage={reposPerPage} 
-                totalRepos={repos.length} 
+                totalRepos={totalRepos} 
                 paginate={paginate}
                 />
             </div>

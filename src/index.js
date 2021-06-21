@@ -20,7 +20,7 @@ const store = createStore(
 // Will update the local storage anytime the state changes
 store.subscribe(() => {
     saveState(store.getState());
-})
+});
 
 ReactDOM.render(
   <Provider store={store}>

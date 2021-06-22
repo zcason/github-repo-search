@@ -11,8 +11,9 @@ function SearchResults() {
     const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
     // Search results from the store 
     const results = useSelector(state => state.results);
+    // Total amount of repositories recieved from the search
     const totalRepos = results ? results.items.length : null;
-    // Gets current repositories
+    // Gets a set repositories based on the page number
     const currentRepos = results ? results.items.slice(indexOfFirstRepo, indexOfLastRepo) : 0;
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);

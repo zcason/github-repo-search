@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Select from 'react-select';
 import { languageOptions, sortOptions } from './SearchInputUtils';
 import { useDispatch } from 'react-redux';
@@ -12,10 +12,10 @@ function SearchInput() {
     const [sortBy, setSortBy] = useState("");
     const [error, setError] = useState(null);
     const disptach = useDispatch();
-    const submitForm = async(event) => { 
+    const submitForm = async (event) => {
         event.preventDefault();
-        // Removes all spaces from the input field
-        const name = repoName.replace(/\s/g , "");
+        // Replaces all spaces with a "+" symbol
+        const name = repoName.replace(/\s/g, "+");
 
         // Checks to see if there's atleast one character in the input field
         if (name === "") {
@@ -30,18 +30,18 @@ function SearchInput() {
     return (
         <div className="search-form">
             <form onSubmit={submitForm}>
-                <input 
+                <input
                     className="search-input"
                     onChange={e => setRepoName(e.target.value)}
                     placeholder={"Enter Repo Name"}
-                    type="text" 
+                    type="text"
                     required
                 />
                 {error && <p className="error">{error}</p>}
                 <div className="search-selectors">
                     <div className="select-box">
                         <label htmlFor="language">Language</label>
-                        <Select 
+                        <Select
                             id="language"
                             placeholder={"All"}
                             defaultValue={language}
@@ -51,13 +51,13 @@ function SearchInput() {
                     </div>
                     <div className="select-box">
                         <label htmlFor="sort-by">Sort By</label>
-                        <Select 
+                        <Select
                             id="sort-by"
                             placeholder={"Best Match (Default)"}
                             defaultValue={sortBy}
                             onChange={sortType => setSortBy(sortType.value)}
                             options={sortOptions}
-                            />
+                        />
                     </div>
                 </div>
                 <button type="submit">Submit</button>

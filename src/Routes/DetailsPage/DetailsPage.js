@@ -31,6 +31,7 @@ function DetailsPage({match}) {
                      <AiFillStar className="star" /> {repo.stargazers_count}
                     </p>
                     <p className="repo-desc">{repo.description}</p>
+                    <a href={repoDetails.html_url} target="blank">View Repository</a>
                 </div>
                 }
             </div>
